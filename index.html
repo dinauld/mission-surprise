@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mission Providence ❤️</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,#ff758c,#ffb199);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow:hidden;
+}
+
+
+.heart{
+    position:absolute;
+    font-size:35px;
+    opacity:.15;
+    animation:float 8s infinite;
+}
+
+
+.card{
+    background:white;
+    width:100%;
+    max-width:520px;
+    padding:35px;
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+    animation:show .6s ease;
+}
+
+
+h1{
+    color:#ff4d6d;
+    font-size:32px;
+}
+
+
+h2{
+    color:#ff4d6d;
+}
+
+
+p{
+    color:#333;
+    font-size:18px;
+    line-height:1.6;
+}
+
+
+.emoji{
+    font-size:65px;
+}
+
+
+button{
+
+    border:none;
+    padding:15px 25px;
+    margin:10px;
+    border-radius:40px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+
+button:hover{
+    transform:scale(1.08);
+}
+
+
+.main{
+
+    background:#ff4d6d;
+    color:white;
+
+}
+
+
+.choice{
+
+    display:block;
+    width:90%;
+    margin:12px auto;
+    background:#fff0f3;
+    border:2px solid #ff4d6d;
+    color:#333;
+
+}
+
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+@keyframes float{
+
+0%{
+transform:translateY(100vh);
+}
+
+100%{
+transform:translateY(-100vh);
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="heart" style="left:10%">❤️</div>
+<div class="heart" style="left:50%;animation-delay:2s">❤️</div>
+<div class="heart" style="left:80%;animation-delay:4s">❤️</div>
+
+
+<div class="card" id="app">
+
+
+<div class="emoji">👀</div>
+
+
+<h1>Providence ❤️</h1>
+
+
+<p>
+J'ai préparé une petite mission pour toi.
+<br><br>
+Promis, cette fois il n'y aura pas besoin de transpirer 😂
+</p>
+
+
+<button class="main" onclick="start()">
+Commencer ✨
+</button>
+
+
+</div>
+
+
+
+<script>
+
+
+let app=document.getElementById("app");
+
+let choix="";
+
+let moment="";
+
+
+
+function start(){
+
+
+app.innerHTML=`
+
+<div class="emoji">💪</div>
+
+
+<h1>Petite histoire...</h1>
+
+
+<p>
+On a déjà partagé pas mal de moments pendant nos séances de sport.
+</p>
+
+
+<p>
+Entre les efforts, les discussions et les fous rires...
+</p>
+
+
+<p>
+Je me suis dit qu'on pouvait aussi faire une activité où on ne finit pas KO 😄
+</p>
+
+
+<button class="main" onclick="question()">
+Continuer ❤️
+</button>
+
+`;
+
+}
+
+
+
+function question(){
+
+
+app.innerHTML=`
+
+<div class="emoji">🎯</div>
+
+
+<h1>Mission 1</h1>
+
+
+<p>
+Si on devait faire une sortie ensemble, tu choisirais quoi ?
+</p>
+
+
+<button class="choice" onclick="choose('🎬 Regarder un film')">
+🎬 Regarder un film
+</button>
+
+
+<button class="choice" onclick="choose('🍝 Restaurant')">
+🍝 Aller manger quelque part
+</button>
+
+
+<button class="choice" onclick="choose('🍦 Glace + balade')">
+🍦 Glace et balade
+</button>
+
+
+<button class="choice" onclick="choose('🎳 Activité fun')">
+🎳 Une activité originale
+</button>
+
+`;
+
+}
+
+
+
+
+function choose(option){
+
+
+choix=option;
+
+
+app.innerHTML=`
+
+<div class="emoji">😌</div>
+
+
+<h1>Excellent choix</h1>
+
+
+<p>
+Donc notre mission serait :
+</p>
+
+
+<h2>${choix}</h2>
+
+
+<p>
+Dernière étape...
+</p>
+
+
+<button class="main" onclick="finalStep()">
+Continuer ❤️
+</button>
+
+
+`;
+
+}
+
+
+
+
+function finalStep(){
+
+
+app.innerHTML=`
+
+<div class="emoji">❤️</div>
+
+
+<h1>Providence...</h1>
+
+
+<p>
+On avait dit :
+<br>
+<b>"On sort un de ces quatre"</b>
+</p>
+
+
+<p>
+Alors pourquoi attendre ? 😄
+</p>
+
+
+<p>
+Quand est-ce que tu serais partante ?
+</p>
+
+
+<button class="choice" onclick="send('Cette semaine 😄')">
+Cette semaine 😄
+</button>
+
+
+<button class="choice" onclick="send('Bientôt ❤️')">
+Bientôt ❤️
+</button>
+
+
+<button class="choice" onclick="send('Je te laisse choisir 😉')">
+Je te laisse choisir 😉
+</button>
+
+
+`;
+
+}
+
+
+
+
+function send(choixMoment){
+
+
+moment=choixMoment;
+
+
+
+fetch("https://formspree.io/f/mjgnqjba", {
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+personne:"Providence",
+
+activite:choix,
+
+disponibilite:moment,
+
+reponse:"Elle a accepté la mission ❤️",
+
+date:new Date().toLocaleString("fr-FR")
+
+})
+
+});
+
+
+
+app.innerHTML=`
+
+<div class="emoji">🎉❤️</div>
+
+
+<h1>Mission réussie !</h1>
+
+
+<p>
+Je suis content que cette idée te plaise 😄
+</p>
+
+
+<h2>${choix}</h2>
+
+
+<p>
+On n'a plus qu'à organiser ça maintenant 😊
+</p>
+
+
+<p>
+À bientôt Providence ❤️
+</p>
+
+
+`;
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
