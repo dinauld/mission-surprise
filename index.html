@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mission Providence ❤️</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+margin:0;
+min-height:100vh;
+background:linear-gradient(135deg,#ff758c,#ffb199);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+font-size:35px;
+opacity:.15;
+animation:float 8s infinite;
+}
+
+.card{
+background:white;
+width:100%;
+max-width:520px;
+padding:35px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,.2);
+animation:fade .5s;
+}
+
+h1{
+color:#ff4d6d;
+font-size:32px;
+}
+
+h2{
+color:#ff4d6d;
+}
+
+p{
+font-size:18px;
+line-height:1.6;
+color:#333;
+}
+
+.emoji{
+font-size:65px;
+}
+
+button{
+border:none;
+padding:15px 25px;
+margin:10px;
+border-radius:40px;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.main{
+background:#ff4d6d;
+color:white;
+}
+
+.choice{
+display:block;
+width:90%;
+margin:12px auto;
+background:#fff0f3;
+border:2px solid #ff4d6d;
+}
+
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+
+@keyframes float{
+from{
+transform:translateY(100vh);
+}
+to{
+transform:translateY(-100vh);
+}
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="heart" style="left:10%">❤️</div>
+<div class="heart" style="left:50%;animation-delay:2s">❤️</div>
+<div class="heart" style="left:80%;animation-delay:4s">❤️</div>
+
+
+
+<div class="card" id="app">
+
+
+<div class="emoji">👀</div>
+
+<h1>Providence ❤️</h1>
+
+<p>
+J'ai préparé une petite mission pour toi.
+<br><br>
+Objectif :
+arrêter de dire "un de ces quatre" 😄
+</p>
+
+
+<button class="main" onclick="start()">
+Commencer 🎯
+</button>
+
+
+</div>
+
+
+
+<script>
+
+
+let app=document.getElementById("app");
+
+
+let activite="";
+let choix="";
+let apres="";
+let jour="";
+let heure="";
+
+
+
+function start(){
+
+
+app.innerHTML=`
+
+<div class="emoji">✨</div>
+
+<h1>Petite question...</h1>
+
+<p>
+On avait parlé de deux idées pour sortir un de ces quatre...
+</p>
+
+<p>
+Mais maintenant il faut choisir 😌
+</p>
+
+
+<button class="choice" onclick="cinema()">
+🎬 Mission cinéma
+<br>
+Film d'horreur + popcorn 👻
+</button>
+
+
+<button class="choice" onclick="paddle()">
+🏄 Mission paddle
+<br>
+Une aventure sur l'eau 🌊
+</button>
+
+
+`;
+
+}
+
+
+
+
+
+function cinema(){
+
+
+activite="🎬 Cinéma";
+
+
+app.innerHTML=`
+
+<div class="emoji">👻</div>
+
+
+<h1>Mission cinéma</h1>
+
+
+<p>
+On avait dit :
+<br><br>
+<b>
+"Un de ces quatre on ira voir un film d'horreur"
+</b>
+</p>
+
+
+<p>
+Mais il reste le choix du film 😈
+</p>
+
+
+<button class="choice" onclick="chooseFilm('Evil Dead Burn - Pathé Palace')">
+👻 Evil Dead Burn
+<br>
+Pathé Palace
+</button>
+
+
+<button class="choice" onclick="chooseFilm('Nightborn - UGC')">
+🌙 Nightborn
+<br>
+UGC
+</button>
+
+
+<button class="choice" onclick="chooseFilm('On choisit ensemble')">
+🎬 On choisit ensemble
+</button>
+
+
+`;
+
+}
+
+
+
+
+function chooseFilm(value){
+
+
+choix=value;
+
+
+afterActivity();
+
+
+}
+
+
+
+
+function paddle(){
+
+
+activite="🏄 Paddle";
+
+
+app.innerHTML=`
+
+<div class="emoji">🌊</div>
+
+
+<h1>Mission paddle</h1>
+
+
+<p>
+Petit rappel 😂
+</p>
+
+
+<p>
+Tu m'avais dit que tu avais peur de l'eau...
+</p>
+
+
+<p>
+Alors quel est ton niveau de courage aujourd'hui ?
+</p>
+
+
+<button class="choice" onclick="paddleChoice('🛟 Tranquille proche du bord')">
+🛟 Je reste proche du bord
+</button>
+
+
+<button class="choice" onclick="paddleChoice('💪 Je tente vraiment')">
+💪 Je tente vraiment
+</button>
+
+
+<button class="choice" onclick="paddleChoice('😂 Je compte sur toi')">
+😂 Je compte sur toi
+</button>
+
+
+`;
+
+}
+
+
+
+
+
+function paddleChoice(value){
+
+
+choix=value;
+
+afterActivity();
+
+}
+
+
+
+
+function afterActivity(){
+
+
+app.innerHTML=`
+
+<div class="emoji">😌</div>
+
+
+<h1>La suite de la mission</h1>
+
+
+<p>
+Une vraie sortie ne s'arrête pas juste après l'activité 😄
+</p>
+
+
+<p>
+Après, on fait quoi ?
+</p>
+
+
+<button class="choice" onclick="chooseAfter('🍔 Manger un truc')">
+🍔 Manger un truc
+</button>
+
+
+<button class="choice" onclick="chooseAfter('🍦 Prendre un dessert')">
+🍦 Prendre un dessert
+</button>
+
+
+<button class="choice" onclick="chooseAfter('🚶 Faire une balade')">
+🚶 Faire une balade
+</button>
+
+
+<button class="choice" onclick="chooseAfter('🎲 Improviser')">
+🎲 Improviser
+</button>
+
+
+`;
+
+}
+
+
+
+
+function chooseAfter(value){
+
+
+apres=value;
+
+
+app.innerHTML=`
+
+<div class="emoji">📅</div>
+
+
+<h1>Dernière étape</h1>
+
+
+<p>
+On arrête de dire :
+<br>
+<b>"un de ces quatre"</b>
+😂
+</p>
+
+
+<p>
+Quel moment te conviendrait ?
+</p>
+
+
+<button class="choice" onclick="chooseDay('Vendredi soir')">
+📅 Vendredi soir
+</button>
+
+
+<button class="choice" onclick="chooseDay('Samedi soir')">
+📅 Samedi soir
+</button>
+
+
+<button class="choice" onclick="chooseDay('Dimanche')">
+📅 Dimanche
+</button>
+
+
+`;
+
+}
+
+
+
+
+
+function chooseDay(value){
+
+
+jour=value;
+
+
+app.innerHTML=`
+
+<div class="emoji">🕒</div>
+
+
+<h1>Dernier choix</h1>
+
+
+<p>
+Quelle heure ?
+</p>
+
+
+<button class="choice" onclick="finish('18h')">
+🕕 18h
+</button>
+
+
+<button class="choice" onclick="finish('20h')">
+🕗 20h
+</button>
+
+
+<button class="choice" onclick="finish('21h')">
+🕘 21h
+</button>
+
+
+`;
+
+}
+
+
+
+
+function finish(value){
+
+
+heure=value;
+
+
+fetch("https://formspree.io/f/mjgnqjba",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+Prenom:"Providence",
+
+Activite:activite,
+
+Choix:choix,
+
+ApresActivite:apres,
+
+Jour:jour,
+
+Heure:heure,
+
+Message:"Mission validée ❤️",
+
+Date:new Date().toLocaleString("fr-FR")
+
+})
+
+});
+
+
+
+app.innerHTML=`
+
+<div class="emoji">🎉❤️</div>
+
+
+<h1>Mission validée !</h1>
+
+
+<p>
+Voilà le programme :
+</p>
+
+
+<h2>${activite}</h2>
+
+
+<p>
+${choix}
+<br><br>
+${apres}
+<br><br>
+📅 ${jour}
+<br>
+🕒 ${heure}
+</p>
+
+
+<p>
+Maintenant il reste juste à organiser ça 😄
+</p>
+
+
+<p>
+À bientôt Providence ❤️
+</p>
+
+
+`;
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
